@@ -67,7 +67,7 @@ class HospitalRegisterController extends Controller
                 $branchInfo['is_primary']=1;
                 $branchInfo['created_by']=auth('web')->user()->id;
                 //Save Hospital Profile
-                $branch = $this->recordSave(ProfileBranch::class,$branchInfo);
+                $this->recordSave(ProfileBranch::class,$branchInfo);
             }
         }
 
