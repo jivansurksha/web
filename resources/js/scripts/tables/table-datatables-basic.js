@@ -137,7 +137,7 @@ $(function () {
           }
         },
         {
-          // Actions
+        // Actions
           targets: -1,
           title: 'Actions',
           orderable: false,

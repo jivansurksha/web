@@ -96,23 +96,23 @@ $(function () {
           },
           language: {
             required: true
-          },
-          twitter: {
-            required: true,
-            url: true
-          },
-          facebook: {
-            required: true,
-            url: true
-          },
-          google: {
-            required: true,
-            url: true
-          },
-          linkedin: {
-            required: true,
-            url: true
           }
+        //   twitter: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   facebook: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   google: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   linkedin: {
+        //     required: true,
+        //     url: true
+        //   }
         }
       });
     });
@@ -140,8 +140,17 @@ $(function () {
       .find('.btn-submit')
       .on('click', function () {
         var isValid = $(this).parent().siblings('form').valid();
+        var formData = $('form').serialize();
         if (isValid) {
-          alert('Submitted..!!');
+          $.ajax({
+            type: "post",
+            url: "save",
+            data: formData,
+            dataType: "dataType",
+            success: function (response) {
+                console.log(response);
+            }
+          });
         }
       });
   }

@@ -1,11 +1,3 @@
-/*=========================================================================================
-  File Name: auth-register.js
-  Description: Auth register js file.
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: PIXINVENT
-  Author URL: http://www.themeforest.net/user/pixinvent
-==========================================================================================*/
 
 $(function () {
   ('use strict');
@@ -39,8 +31,11 @@ $(function () {
         $(element).valid();
       }, */
       rules: {
-        'register-username': {
+        'register-first_name': {
           required: true
+        },
+        'register-last_name': {
+            required: true
         },
         'register-email': {
           required: true,
@@ -64,7 +59,10 @@ $(function () {
       var $this = $(this);
       $this.validate({
         rules: {
-          username: {
+            first_name: {
+            required: true
+          },
+          last_name: {
             required: true
           },
           email: {

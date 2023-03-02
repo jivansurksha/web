@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('asset_files', function (Blueprint $table) {
             $table->bigIncrements('id','255');
-            $table->bigInteger('users_id')->nullable(true);
+            $table->string('model_type')->nullable();
+            $table->unsignedBigInteger('model_id')->nullable();
             $table->string('filename','100');
             $table->string('filetype','20');
             $table->string('filepath','255');
@@ -23,7 +24,8 @@ return new class extends Migration
             $table->smallInteger('height')->nullable(true);;
             $table->integer('size')->nullable(true);;
             $table->tinyInteger('is_active')->default(1);
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+			$table->timestamp('updated_at')->nullable();
         });
     }
 

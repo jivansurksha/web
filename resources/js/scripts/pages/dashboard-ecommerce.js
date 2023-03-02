@@ -70,6 +70,7 @@ $(window).on('load', function () {
     );
   }, 2000);
 
+
   //------------ Statistics Bar Chart ------------
   //----------------------------------------------
   statisticsOrderChartOptions = {

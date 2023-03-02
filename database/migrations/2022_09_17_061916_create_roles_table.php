@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name','64');
             $table->string('desciption','255')->nullable(true);
-            $table->string('permission');
             $table->tinyInteger('is_active');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+			$table->timestamp('updated_at')->nullable();
         });
     }
 

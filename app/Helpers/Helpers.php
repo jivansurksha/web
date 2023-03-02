@@ -16,7 +16,7 @@ class Helpers
         $DefaultData = [
             'mainLayoutType' => 'vertical',
             'theme' => 'light',
-            'sidebarCollapsed' => false,
+            'sidebarCollapsed' => true,
             'navbarColor' => '',
             'horizontalMenuType' => 'floating',
             'verticalMenuNavbarType' => 'floating',

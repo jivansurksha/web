@@ -2,56 +2,307 @@
   "menu": [
     {
       "name": "Dashboards",
-      "badge": "2",
+      "url": "admin/dashboard",
       "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
       "icon": "home",
-      "slug": "",
-      "submenu": [
-        {
-          "url": "dashboard/analytics",
-          "name": "Analytics",
-          "icon": "circle",
-          "slug": "dashboard-analytics"
-        },
-        {
-          "url": "/",
-          "name": "eCommerce",
-          "icon": "circle",
-          "slug": "dashboard-ecommerce"
-        }
-      ]
+      "slug": "dashboard"
     },
+
+      {
+        "name": "Hospitals",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "plus",
+        "slug": "hospital",
+        "submenu": [
+          {
+            "url": "admin/hospital",
+            "name": "List",
+            "icon": "list",
+            "slug": "hospital-list"
+          },
+          {
+            "url": "admin/hospital/add",
+            "name": "Add",
+            "icon": "circle",
+            "slug": "hospital-add"
+          }
+        ]
+      },
+      {
+        "name": "Feature",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "user-x",
+        "slug": "feature",
+        "submenu": [
+          {
+            "url": "admin/feature",
+            "name": "Feature List",
+            "icon": "list",
+            "slug": "feature-list"
+          },
+          {
+            "url": "admin/feature/add",
+            "name": "Feature Add",
+            "icon": "user-plus",
+            "slug": "feature-add"
+          },
+          {
+            "url": "admin/amenity",
+            "name": "Amenity List",
+            "icon": "user-plus",
+            "slug": "amenity-list"
+          },
+          {
+            "url": "admin/amenity/add",
+            "name": "Amenity Add",
+            "icon": "user-plus",
+            "slug": "amenity-add"
+          }
+
+        ]
+      },
 
     {
       "navheader": "Apps & Pages",
       "slug": ""
     },
     {
-      "url": "app/email",
-      "name": "Email",
-      "icon": "mail",
-      "slug": "app-email"
-    },    
+        "name": "Appointments",
+        "badge": "3",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "calendar",
+        "slug": "appointment",
+        "submenu": [
+          {
+            "url": "appointment/current",
+            "name": "Current",
+            "icon": "circle",
+            "slug": "appointment-current"
+          },
+          {
+            "url": "appointment/history",
+            "name": "History",
+            "icon": "circle",
+            "slug": "appointment-history"
+          }
+        ]
+      },
+      {
+        "name": "Patients",
+        "icon": "users",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "app/patient/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "app-patient-list"
+          },
+          {
+            "url": "app/patient/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "app-patient-preview"
+          }
+
+        ]
+      },
+      {
+        "name": "Bro",
+        "icon": "feather",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "app/bro/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "app-bro-list"
+          },
+          {
+            "url": "app/bro/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "app-bro-preview"
+          }
+
+        ]
+      },
+      {
+        "name": "Ads",
+        "icon": "git-pull-request",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "app/ads/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "app-ads-list"
+          },
+          {
+            "url": "app/ads/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "app-ads-preview"
+          }
+
+        ]
+      },
     {
-      "name": "Invoice",
-      "icon": "file-text",
-      "slug": "",
-      "submenu": [
-        {
-          "url": "app/invoice/list",
-          "name": "List",
-          "icon": "circle",
-          "slug": "app-invoice-list"
-        },
-        {
-          "url": "app/invoice/preview",
-          "name": "Preview",
-          "icon": "circle",
-          "slug": "app-invoice-preview"
-        }
-        
-      ]
-    }
-    
+        "navheader": "Reports",
+        "slug": ""
+    },
+    {
+        "name": "Patients",
+        "icon": "layout",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "report/patients/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "report-patients-list"
+          },
+          {
+            "url": "report/patients/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "report-patients-preview"
+          }
+
+        ]
+    },
+    {
+        "name": "Bro",
+        "icon": "file-text",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "report/bro/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "report-bro-list"
+          },
+          {
+            "url": "report/bro/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "report-bro-preview"
+          }
+
+        ]
+    },
+    {
+        "name": "Hospitals",
+        "icon": "file-text",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "report/hospitals/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "report-hospitals-list"
+          },
+          {
+            "url": "report/hospitals/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "report-hospitals-preview"
+          }
+
+        ]
+    },
+    {
+        "navheader": "Accounts",
+        "slug": ""
+    },
+    {
+        "name": "Accounts",
+        "icon": "file-text",
+        "slug": "",
+        "submenu": [
+          {
+            "url": "account/hospitals/list",
+            "name": "List",
+            "icon": "circle",
+            "slug": "report-hospitals-list"
+          },
+          {
+            "url": "account/hospitals/preview",
+            "name": "Preview",
+            "icon": "circle",
+            "slug": "account-hospitals-preview"
+          }
+
+        ]
+    },
+    {
+        "navheader": "Users",
+        "slug": ""
+    },
+    {
+        "name": "Users",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "user",
+        "slug": "user",
+        "submenu": [
+          {
+            "url": "admin/user",
+            "name": "List",
+            "icon": "list",
+            "slug": "user-list"
+          },
+          {
+            "url": "admin/user/add",
+            "name": "Add",
+            "icon": "user-plus",
+            "slug": "register-user"
+          }
+        ]
+      },
+      {
+        "name": "Roles",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "shield",
+        "slug": "roles",
+        "submenu": [
+          {
+            "url": "roles/list",
+            "name": "List",
+            "icon": "list",
+            "slug": "roles-list"
+          },
+          {
+            "url": "roles/add",
+            "name": "Add",
+            "icon": "circle",
+            "slug": "roles-edit"
+          }
+        ]
+      },
+      {
+        "name": "Permission",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "user-x",
+        "slug": "permission",
+        "submenu": [
+          {
+            "url": "permission/list",
+            "name": "List",
+            "icon": "list",
+            "slug": "permission-list"
+          },
+          {
+            "url": "permission/add",
+            "name": "Add",
+            "icon": "user-plus",
+            "slug": "permission-edit"
+          }
+        ]
+      }
   ]
 }

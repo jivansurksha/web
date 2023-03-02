@@ -71,36 +71,24 @@ $(function () {
   if (jqForm.length) {
     jqForm.validate({
       rules: {
-        'basic-default-name': {
+        first_name: {
           required: true
         },
-        'basic-default-email': {
+        'user_name': {
           required: true,
           email: true
         },
-        'basic-default-password': {
+        'password': {
           required: true
         },
         'confirm-password': {
           required: true,
-          equalTo: '#basic-default-password'
+          equalTo: '#password'
         },
-        'select-country': {
+        'select-state': {
           required: true
         },
-        dob: {
-          required: true
-        },
-        customFile: {
-          required: true
-        },
-        validationRadiojq: {
-          required: true
-        },
-        validationBiojq: {
-          required: true
-        },
-        validationCheck: {
+        gender: {
           required: true
         }
       }
