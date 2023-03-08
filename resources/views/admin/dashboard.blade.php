@@ -1,5 +1,5 @@
 
-@extends('admin\layouts\contentLayoutMaster')
+@extends('admin.layouts.contentLayoutMaster')
 
 @section('title', 'Dashboard')
 
