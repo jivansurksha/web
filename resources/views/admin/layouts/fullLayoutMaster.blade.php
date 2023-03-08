@@ -26,7 +26,7 @@
     rel="stylesheet">
 
   {{-- Include core + vendor Styles --}}
-  @include('admin\panels\styles')
+  @include('admin.panels.styles')
 </head>
 
 
