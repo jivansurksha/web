@@ -53,7 +53,7 @@
   <!-- End: Content-->
 
   {{-- include default scripts --}}
-  @include('admin\panels\scripts')
+  @include('admin.panels.scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {

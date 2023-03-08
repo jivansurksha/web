@@ -403,7 +403,7 @@
                             />
                           </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                           <div class="mb-1 col-md-6">
                             <label class="form-label" for="google">Google+</label>
                             <input
@@ -424,7 +424,7 @@
                               placeholder="https://linkedin.com/abc"
                             />
                           </div>
-                        </div>
+                        </div> --}}
                       </form>
                       <div class="d-flex justify-content-between">
                         <button class="btn btn-primary btn-prev">
