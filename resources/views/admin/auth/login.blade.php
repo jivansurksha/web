@@ -1,4 +1,4 @@
-@extends('admin\layouts\fullLayoutMaster')
+@extends('admin.layouts.fullLayoutMaster')
 
 @section('title', 'Login Page')
 

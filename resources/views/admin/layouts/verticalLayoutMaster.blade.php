@@ -61,7 +61,7 @@ data-asset-path="{{ asset('/')}}">
   @include('admin.panels.footer')
 
   {{-- include default scripts --}}
-  @include('admin\panels\scripts')
+  @include('admin.panels.scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {
