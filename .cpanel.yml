@@ -3,4 +3,3 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/rsranjan505/public_html/
     - /bin/cp -R jivansurksha $DEPLOYPATH
-
