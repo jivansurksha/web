@@ -14,6 +14,7 @@ use App\Models\ProfileBranch;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HospitalRegisterController extends Controller
 {
@@ -42,7 +43,7 @@ class HospitalRegisterController extends Controller
     public function create(UserRequest $userRequest,ProfileRequest $profileRequest,ProfileBranchRequest $profileBranchRequest)
     {
         $userInfo = $userRequest->only('first_name','last_name','user_name','email','mobile','state_id','city_id','postcode','gender','password');
-
+        $userInfo['password']= Hash::make($userInfo['password']);
         $user = $this->recordSave(User::class,$userInfo);
         if($user){
             $hospitalRequest  = $profileRequest->only('profile_contact_person','profile_phone','profile_email','profile_type','profile_alt_number','profile_org_name','profile_reg_number','profile_speciality','profile_amenity_id','profile_feature_id');

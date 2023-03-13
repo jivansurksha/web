@@ -25,11 +25,12 @@ class UserRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'first_name' => 'required|string:30',
+                'first_name' => 'required|string:3',
                 'last_name' => 'required|string:30',
                 'user_name' => 'required|unique:users,user_name',
                 'gender' => 'required|string:30',
-                'password' => 'required',
+                'mobile' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+                'password' => 'required|min:8',
             ];
         }
         if ($this->method() == 'PATCH') {
@@ -37,6 +38,7 @@ class UserRequest extends FormRequest
                 'first_name' => 'required|string:30',
                 'last_name' => 'required|string:30',
                 'gender' => 'required|string:30',
+                'mobile' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             ];
         }
         return [];
