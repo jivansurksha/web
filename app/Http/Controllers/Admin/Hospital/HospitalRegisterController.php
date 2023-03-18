@@ -40,13 +40,13 @@ class HospitalRegisterController extends Controller
         return view('admin.hospital.add', ['pageConfigs' => $this->pageConfigs,'data'=>$data]);
     }
 
-    public function create(UserRequest $userRequest,ProfileRequest $profileRequest,ProfileBranchRequest $profileBranchRequest)
+    public function create(UserRequest $userRequest,ProfileRequest $profileRequest)
     {
         $userInfo = $userRequest->only('first_name','last_name','user_name','email','mobile','state_id','city_id','postcode','gender','password');
         $userInfo['password']= Hash::make($userInfo['password']);
         $user = $this->recordSave(User::class,$userInfo);
         if($user){
-            $hospitalRequest  = $profileRequest->only('profile_contact_person','profile_phone','profile_email','profile_type','profile_alt_number','profile_org_name','profile_reg_number','profile_speciality','profile_amenity_id','profile_feature_id');
+            $hospitalRequest  = $profileRequest->only('profile_contact_person','profile_phone','profile_email','profile_type','profile_alt_number','profile_org_name','profile_reg_number','profile_speciality','profile_amenity_id','profile_feature_id','profile_address','profile_state_id','profile_city_id','profile_postcode','profile_latitude','profile_longitude');
             $hospitalInfo=null;
             $hospitalRequest['profile_feature_id'] = json_encode($hospitalRequest['profile_feature_id'],true);
             $hospitalRequest['profile_amenity_id'] = json_encode($hospitalRequest['profile_amenity_id'],true);
@@ -58,18 +58,6 @@ class HospitalRegisterController extends Controller
             $hospitalInfo['user_id']=$user->id;
             $hospitalInfo['created_by']=auth('web')->user()->id;
             $profile = $this->recordSave(Profile::class,$hospitalInfo);
-            if($profile){
-                $branchRequest  = $profileBranchRequest->only('branch_contact_person','branch_phone','branch_email','branch_address','branch_state_id','branch_city_id','branch_postcode','branch_latitude','branch_longitude');
-                $branchInfo=null;
-                foreach($branchRequest as $key=>$info){
-                    $branchInfo[substr($key,7)]=$info;
-                }
-                $branchInfo['profile_id']=$profile->id;
-                $branchInfo['is_primary']=1;
-                $branchInfo['created_by']=auth('web')->user()->id;
-                //Save Hospital Profile
-                $this->recordSave(ProfileBranch::class,$branchInfo);
-            }
         }
 
         return redirect()->back()->with($this->toastrMsg('created'));

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Hospital\HospitalRegisterController;
 use App\Http\Controllers\API\Hospital\SignInController;
 use App\Http\Controllers\API\Hospital\SignUpController;
 use Illuminate\Http\Request;
@@ -28,6 +29,14 @@ Route::group(['middleware' => 'api'], function ($router) {
     //hospital user registration
     Route::post('/signUp', [SignUpController::class, 'signUp'])->name('signUp');
     Route::post('/sigin', [SignInController::class, 'signIn'])->name('signIn');
+    Route::post('/user-update', [SignUpController::class, 'userUpdate'])->name('user-update');
+    Route::post('/change-password', [SignUpController::class, 'changePassword'])->name('change-password');
     Route::get('/logout', [SignInController::class, 'logout'])->name('logout');
 
+    //hospital user registration
+    Route::get('/feature-list', [HospitalRegisterController::class, 'getFeatureList'])->name('getFeatureList');
+    Route::get('/amenity-list', [HospitalRegisterController::class, 'getAmenityList'])->name('getAmenityList');
+
+    Route::post('/hospital-register', [HospitalRegisterController::class, 'hospitalRegister'])->name('hospital-register');
+    Route::post('/hospital-update/{id}', [HospitalRegisterController::class, 'hospitalUpdate'])->name('hospital-update');
 });

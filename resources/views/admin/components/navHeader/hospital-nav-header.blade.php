@@ -32,17 +32,6 @@
           >Register New Hospital</a
         >
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link {{Route::currentRouteName() == 'hospital-branch' ? 'active' :''}}"
-          id="profile-tab"
-          href="{{url('admin/user/add')}}"
-          aria-controls="profile"
-          role="tab"
-          aria-selected="false"
-          >Add Branch Hospital</a
-        >
-      </li>
     <li class="nav-item">
         <a
           class="nav-link {{Route::currentRouteName() == 'register-user' ? 'active' :''}}"

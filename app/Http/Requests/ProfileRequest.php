@@ -28,6 +28,11 @@ class ProfileRequest extends FormRequest
                 'profile_phone' => 'required|string:30',
                 'profile_email' => 'required|email',
                 'profile_org_name' => 'required|string:100',
+                'profile_contact_person' => 'required|string:100',
+                'profile_address' => 'required|string',
+                'profile_state_id' => 'required|integer',
+                'profile_city_id' => 'required|integer',
+                'profile_postcode' => 'required|integer',
             ];
         }
         if ($this->method() == 'PATCH') {
@@ -35,6 +40,11 @@ class ProfileRequest extends FormRequest
                 'profile_phone' => 'required|string:30',
                 'profile_email' => 'required|email',
                 'profile_org_name' => 'required|string:100',
+                'profile_contact_person' => 'required|string:100',
+                'profile_address' => 'required|string',
+                'profile_state_id' => 'required|integer',
+                'profile_city_id' => 'required|integer',
+                'profile_postcode' => 'required|number',
             ];
         }
         return [];

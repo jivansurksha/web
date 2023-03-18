@@ -51,6 +51,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->morphOne(AssetFile::class, 'pictureable');
     }
 
+    public function profile(){
+        return $this->hasMany(Profile::class,'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -60,30 +60,8 @@
                         </span>
                       </button>
                     </div>
-                    <div class="line">
-                      <i data-feather="chevron-right" class="font-medium-2"></i>
-                    </div>
-                    <div class="step" data-target="#address-step" role="tab" id="address-step-trigger">
-                      <button type="button" class="step-trigger">
-                        <span class="bs-stepper-box">3</span>
-                        <span class="bs-stepper-label">
-                          <span class="bs-stepper-title">Hospital Address</span>
-                          <span class="bs-stepper-subtitle">Add Address</span>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="line">
-                      <i data-feather="chevron-right" class="font-medium-2"></i>
-                    </div>
-                    <div class="step" data-target="#social-links" role="tab" id="social-links-trigger">
-                      <button type="button" class="step-trigger">
-                        <span class="bs-stepper-box">4</span>
-                        <span class="bs-stepper-label">
-                          <span class="bs-stepper-title">Social Links</span>
-                          <span class="bs-stepper-subtitle">Add Social Links</span>
-                        </span>
-                      </button>
-                    </div>
+
+
                   </div>
                   <div class="bs-stepper-content">
                     <div id="account-details" class="content" role="tabpanel" aria-labelledby="account-details-trigger">
@@ -277,154 +255,53 @@
                                 </select>
                             </div>
                         </div>
-                      </form>
-                      <div class="d-flex justify-content-between">
-                        <button class="btn btn-primary btn-prev">
-                          <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                          <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                        </button>
-                        <button class="btn btn-primary btn-next">
-                          <span class="align-middle d-sm-inline-block d-none">Next</span>
-                          <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div id="address-step" class="content" role="tabpanel" aria-labelledby="address-step-trigger">
-                      <div class="content-header">
-                        <h5 class="mb-0">Address</h5>
-                        {{-- <small>Enter Your Address.</small> --}}
-                      </div>
-                      <form>
                         <div class="row">
                             <div class="mb-1 col-md-6">
-                              <label class="form-label" for="contact_person">Contact Person</label>
-                              <input type="text" name="branch_contact_person" id="branch_contact_person" class="form-control" placeholder="Contact Person" />
+                              <label class="form-label" for="address">Address</label>
+                              <input
+                                type="text"
+                                id="profile_address"
+                                name="profile_address"
+                                class="form-control"
+                                placeholder="98  Borough bridge Road, Birmingham"
+                              />
                             </div>
-                            <div class="mb-1 col-md-6">
-                              <label class="form-label" for="phone">Phone Number</label>
-                              <input type="number" name="branch_phone" id="branch_phone" class="form-control" placeholder="Phone Number" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-1 col-md-6">
-                              <label class="form-label" for="email">Email</label>
-                              <input type="email" name="branch_email" id="branch_email" class="form-control" placeholder="Email" />
-                            </div>
-                            <div class="mb-1 col-md-6">
-                              <label class="form-label" for="country_id">Country</label>
-                                <select class="select2 w-100" name="branch_country_id" id="branch_country_id">
-                                    <option value="101" selected>India</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                          <div class="mb-1 col-md-6">
-                            <label class="form-label" for="address">Address</label>
-                            <input
-                              type="text"
-                              id="branch_address"
-                              name="branch_address"
-                              class="form-control"
-                              placeholder="98  Borough bridge Road, Birmingham"
-                            />
-                          </div>
-                            <div class="mb-1 col-md-6">
-                                <label class="form-label" for="select-city">City</label>
-                                <select class="form-select select2" id="branch_city_id" name="branch_city_id">
-                                    <option value="">Select Type</option>
-                                    @foreach ($data['city'] as $city)
-                                    <option value="{{$city->id}}">{{$city->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-1 col-md-6">
+
+                              <div class="mb-1 col-md-6">
                                 <label class="form-label" for="city1">State</label>
-                                <select class="form-select select2" id="branch_state_id" name="branch_state_id">
+                                <select class="form-select select2" id="profile_state_id" name="profile_state_id">
                                     <option value="">Select Type</option>
                                     @foreach ($data['state'] as $state)
                                     <option value="{{$state->id}}">{{$state->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                          </div>
+                          <div class="row">
                             <div class="mb-1 col-md-6">
-                                <label class="form-label" for="email">Pin Code</label>
-                                <input type="number" name="branch_postcode" id="branch_postcode" class="form-control" placeholder="Pin Code" />
+                                <label class="form-label" for="select-city">City</label>
+                                <select class="form-select select2" id="profile_city_id" name="profile_city_id">
+                                    <option value="">Select Type</option>
+                                    @foreach ($data['city'] as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-1 col-md-6">
-                              <label class="form-label" for="latitude">Latitude</label>
-                              <input type="text" name="branch_latitude" id="branch_latitude" class="form-control" placeholder="25.334445" />
-                            </div>
-                            <div class="mb-1 col-md-6">
-                              <label class="form-label" for="longitude">Longitude</label>
-                              <input type="text" name="branch_longitude" id="branch_longitude" class="form-control" placeholder="24.567890" />
-                            </div>
-                        </div>
-                      </form>
-                      <div class="d-flex justify-content-between">
-                        <button class="btn btn-primary btn-prev">
-                          <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                          <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                        </button>
-                        <button class="btn btn-primary btn-next">
-                          <span class="align-middle d-sm-inline-block d-none">Next</span>
-                          <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div id="social-links" class="content" role="tabpanel" aria-labelledby="social-links-trigger">
-                      <div class="content-header">
-                        <h5 class="mb-0">Social Links</h5>
-                        <small>Enter Your Social Links.</small>
-                      </div>
-                      <form>
-                        <div class="row">
-                          <div class="mb-1 col-md-6">
-                            <label class="form-label" for="twitter">Twitter</label>
-                            <input
-                              type="text"
-                              id="twitter"
-                              name="twitter"
-                              class="form-control"
-                              placeholder="https://twitter.com/abc"
-                            />
+                              <div class="mb-1 col-md-6">
+                                  <label class="form-label" for="email">Pin Code</label>
+                                  <input type="number" name="profile_postcode" id="profile_postcode" class="form-control" placeholder="Pin Code" />
+                              </div>
                           </div>
-                          <div class="mb-1 col-md-6">
-                            <label class="form-label" for="facebook">Facebook</label>
-                            <input
-                              type="text"
-                              id="facebook"
-                              name="facebook"
-                              class="form-control"
-                              placeholder="https://facebook.com/abc"
-                            />
+                          <div class="row">
+                              <div class="mb-1 col-md-6">
+                                <label class="form-label" for="latitude">Latitude</label>
+                                <input type="text" name="profile_latitude" id="profile_latitude" class="form-control" placeholder="25.334445" />
+                              </div>
+                              <div class="mb-1 col-md-6">
+                                <label class="form-label" for="longitude">Longitude</label>
+                                <input type="text" name="profile_longitude" id="profile_longitude" class="form-control" placeholder="24.567890" />
+                              </div>
                           </div>
-                        </div>
-                        {{-- <div class="row">
-                          <div class="mb-1 col-md-6">
-                            <label class="form-label" for="google">Google+</label>
-                            <input
-                              type="text"
-                              id="google"
-                              name="google"
-                              class="form-control"
-                              placeholder="https://plus.google.com/abc"
-                            />
-                          </div>
-                          <div class="mb-1 col-md-6">
-                            <label class="form-label" for="linkedin">Linkedin</label>
-                            <input
-                              type="text"
-                              id="linkedin"
-                              name="linkedin"
-                              class="form-control"
-                              placeholder="https://linkedin.com/abc"
-                            />
-                          </div>
-                        </div> --}}
                       </form>
                       <div class="d-flex justify-content-between">
                         <button class="btn btn-primary btn-prev">
@@ -432,7 +309,7 @@
                           <span class="align-middle d-sm-inline-block d-none">Previous</span>
                         </button>
                         <button class="btn btn-success btn-submit">Submit</button>
-                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
