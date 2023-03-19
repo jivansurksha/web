@@ -30,6 +30,27 @@
         ]
       },
       {
+        "name": "Commission",
+        "badge": "4",
+        "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+        "icon": "plus",
+        "slug": "hospital",
+        "submenu": [
+          {
+            "url": "admin/commission",
+            "name": "List",
+            "icon": "list",
+            "slug": "commission-list"
+          },
+          {
+            "url": "admin/commission/add",
+            "name": "Add",
+            "icon": "circle",
+            "slug": "commission-add"
+          }
+        ]
+      },
+      {
         "name": "Feature",
         "badge": "4",
         "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",

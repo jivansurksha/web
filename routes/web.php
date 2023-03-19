@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Auth\UsersController;
+use App\Http\Controllers\Admin\Commission\CommissionController;
 use App\Http\Controllers\Admin\Feature\AmenityController;
 use App\Http\Controllers\Admin\Feature\FeatureController;
 use App\Http\Controllers\Admin\Hospital\HospitalOverviewController;
@@ -88,6 +89,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AuthUser'], function () {
         Route::get('/edit/{id?}', [HospitalProfileController::class, 'edit'])->name('profile-edit');
         Route::patch('/update', [HospitalProfileController::class, 'update'])->name('profile-update');
 
+    });
+
+      //Commssion
+      Route::prefix('commission')->group(function () {
+        Route::get('/', [CommissionController::class, 'index'])->name('commission-list');
+        Route::get('/add', [CommissionController::class, 'commission'])->name('commission-add');
+        Route::post('/save', [CommissionController::class, 'create'])->name('commission-save');
+        Route::get('/edit/{id?}', [CommissionController::class, 'edit'])->name('commission-edit');
+        Route::patch('/update', [CommissionController::class, 'update'])->name('commission-update');
     });
 
 });

@@ -27,6 +27,7 @@ return [
     "Feature Add" => "Feature Add",
     "Amenity List" => "Amenity List",
     "Amenity Add" => "Amenity Add",
+    "Commission" => "Commission",
 ];
 
 // return [

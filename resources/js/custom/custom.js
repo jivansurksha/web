@@ -272,6 +272,48 @@
     });
 
 
+    //amenity
+    $("#commission-table").DataTable({
+        processing: true,
+        serverSide: true,
+      ajax:"commission",
+      data: {
+        _token: $('input[name="_token"]').val()
+        },
+      columns: [
+        // { data: 'responsive_id'},
+        {data: 'id', name: 'id',
+            orderable: false,
+            searchable: false,
+        },
+        { data: 'profile_id', name: 'profile_id'},
+        { data: 'percentage', name: 'percentage'},
+        { data: 'flat_rate', name: 'flat_rate'},
+        // { data: 'Hospital Name', name: 'Hospital Name'},
+        // { data: 'Commission Percentage',name: 'Commission Percentage' },
+        // { data: 'Commission Flat Rate',name: 'Commission Flat Rate' },
+        { data: 'is_active',name: 'is_active' },
+        { data: 'action',name: 'action' }
+      ],
+      columnDefs: [
+        {
+          className: 'control',
+          orderable: false,
+          targets: 0
+        }
+
+      ],
+      language: {
+        paginate: {
+          // remove previous & next text from pagination
+          previous: '&nbsp;',
+          next: '&nbsp;'
+        }
+      }
+    });
+
+
+
       // Filter form control to default size for all tables
   $('.dataTables_filter .form-control').removeClass('form-control-sm');
   $('.dataTables_length .form-select').removeClass('form-select-sm').removeClass('form-control-sm');
@@ -320,7 +362,6 @@ function deleteConfirmation(id,model){
             });
             }
         });
-
 }
 
 
