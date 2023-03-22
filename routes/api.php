@@ -39,4 +39,8 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     Route::post('/hospital-register', [HospitalRegisterController::class, 'hospitalRegister'])->name('hospital-register');
     Route::post('/hospital-update/{id}', [HospitalRegisterController::class, 'hospitalUpdate'])->name('hospital-update');
+
+    // Hospital List
+    Route::get('/hospital-list', [HospitalRegisterController::class, 'getHospitalList'])->name('hospital-list');
+    Route::get('/hospital-show/{id?}', [HospitalRegisterController::class, 'getHospitalById'])->name('hospital-show');
 });

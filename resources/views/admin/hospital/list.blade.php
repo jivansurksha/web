@@ -1,6 +1,6 @@
 
 @extends('admin.layouts.contentLayoutMaster')
-@section('title', 'Feature list')
+@section('title', 'Hospital list')
 
 @section('vendor-style')
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap5.min.css')) }}">
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-@include('admin.components.navHeader.feature-nav-header')
+@include('admin.components.navHeader.hospital-nav-header')
 <section id="basic-tabs-components">
     <div class="row match-height">
       <!-- Basic Tabs starts -->
@@ -22,7 +22,7 @@
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header border-bottom">
-                                <h4 class="card-title">Features List</h4>
+                                <h4 class="card-title">Hospital List</h4>
                             </div>
                             <div class="card-datatable">
                                 {{$dataTable->table()}}

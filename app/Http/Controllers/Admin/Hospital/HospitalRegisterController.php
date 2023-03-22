@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Hospital;
+
+use App\DataTables\HospitalDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileBranchRequest;
 use App\Http\Requests\ProfileRequest;
@@ -26,10 +28,10 @@ class HospitalRegisterController extends Controller
         $this->pageConfigs = ['blankPage' => false];
     }
 
-    // public function index(AmenityDataTable $dataTable)
-    // {
-    //     return $dataTable->render('admin.feature.amenity-list',['pageConfigs' => $this->pageConfigs]);
-    // }
+    public function index(HospitalDataTable $dataTable)
+    {
+        return $dataTable->render('admin.hospital.list',['pageConfigs' => $this->pageConfigs]);
+    }
 
     public function hospital()
     {
@@ -61,6 +63,11 @@ class HospitalRegisterController extends Controller
         }
 
         return redirect()->back()->with($this->toastrMsg('created'));
+
+    }
+
+    public function hospitallist()
+    {
 
     }
 }

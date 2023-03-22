@@ -60,4 +60,19 @@ class HospitalRegisterController extends Controller
         // return response()->json(['message'=>'success']);
         return created($profile,'Hospital Updated successfully');
     }
+
+    public function getHospitalList()
+    {
+        $hospitals = Profile::where('is_active',1)->with('owner','creator')->get();
+        return ok($hospitals);
+    }
+
+    public function getHospitalById($id=null)
+    {
+        if($id!=null){
+            $hospitals = Profile::where('id',$id)->with('owner','creator')->get()->first();
+            return ok($hospitals);
+        }
+        return bad('Invalid Id');
+    }
 }
