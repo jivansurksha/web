@@ -25,6 +25,7 @@ class AmenityDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addColumn('action', function($row){
+            $model="'amenity'";
             return '<div class="dropdown">
             <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
                 <i data-feather="more-vertical"></i>
@@ -34,7 +35,7 @@ class AmenityDataTable extends DataTable
                     <i data-feather="edit-2" class="me-50"></i>
                     <span>Edit</span>
                 </a>
-                <a class="dropdown-item" onClick="deleteConfirmation('.$row->id.')">
+                <a class="dropdown-item" onClick="deleteConfirmation('.$row->id.','.$model.')">
                     <i data-feather="trash" class="me-50"></i>
                     <span>Delete</span>
                 </a>
@@ -43,9 +44,9 @@ class AmenityDataTable extends DataTable
         })
         ->editColumn('is_active', function ($row) {
             if($row->is_active == 0){
-                return '<span class="badge rounded-pill badge-light-warning me-1">In Active</span>';
+                return "In Active";
             }else{
-                return '<span class="badge rounded-pill badge-light-primary me-1">Active</span>';
+                return "Active";
             }
         })
         ->editColumn('created_at', function ($row) {

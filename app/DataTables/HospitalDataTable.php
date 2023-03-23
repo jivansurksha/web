@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -26,6 +27,16 @@ class HospitalDataTable extends DataTable
         ->addColumn('action', function($row){
             return '<a href="user/edit/'.$row->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
         })
+        ->editColumn('user_id', function ($row) {
+            return $row->owner->first_name;
+        })
+        ->editColumn('state_id', function ($row) {
+            return $row->state !=null ? $row->state->name :'';
+        })
+        ->editColumn('city_id', function ($row) {
+            return $row->city !=null?$row->city->name:'';
+        })
+
         ->setRowId('id');
     }
 
@@ -35,16 +46,10 @@ class HospitalDataTable extends DataTable
      * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model): QueryBuilder
+    public function query(Profile $model): QueryBuilder
     {
-        $type = $this->type;
-        if($type == 'employee'){
-            $users = $model->newQuery()->where('user_type','employee')->latest();
-        }else{
-            $users = $model->newQuery();
-        }
-
-        return $this->applyScopes($users);
+        $profiles = $model->newQuery()->with('owner','creator')->latest();
+        return $this->applyScopes($profiles);
     }
 
     // public function ajax()
@@ -64,7 +69,7 @@ class HospitalDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('hospitals')
+                    ->setTableId('hospitals-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -88,13 +93,20 @@ class HospitalDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('responsive_id'),
+            // Column::make('responsive_id'),
             Column::make('id'),
-            Column::make('first_name'),
-            Column::make('last_name'),
-            Column::make('user_name'),
-            Column::make('gender'),
-            Column::make('user_type'),
+            Column::make('Owner Name'),
+            Column::make('contact_person'),
+            Column::make('Phone'),
+            Column::make('Email'),
+            Column::make('Hospital Name'),
+            Column::make('Registration Number'),
+            Column::make('Speciality'),
+            Column::make('Address'),
+            Column::make('State'),
+            Column::make('City'),
+            Column::make('Pincode'),
+            Column::make('is_active'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

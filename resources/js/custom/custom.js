@@ -323,6 +323,7 @@
 
 //sweet alert
 function deleteConfirmation(id,model){
+
     var id = id;
     if(model=='feature'){
         var url ='';

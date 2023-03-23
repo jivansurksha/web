@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AuthUser'], function () {
         Route::post('/save', [FeatureController::class, 'create'])->name('feature-save');
         Route::get('/edit/{id?}', [FeatureController::class, 'edit'])->name('feature-edit');
         Route::patch('/update', [FeatureController::class, 'update'])->name('feature-update');
+        Route::get('/delete/{id?}', [FeatureController::class, 'delete'])->name('feature-delete');
     });
 
     //Amenity
@@ -67,14 +68,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AuthUser'], function () {
         Route::post('/save', [AmenityController::class, 'create'])->name('amenity-save');
         Route::get('/edit/{id?}', [AmenityController::class, 'edit'])->name('amenity-edit');
         Route::patch('/update', [AmenityController::class, 'update'])->name('amenity-update');
+        Route::get('/delete/{id?}', [AmenityController::class, 'delete'])->name('amenity-delete');
     });
 
     //hospital
     Route::prefix('hospital')->group(function () {
-        Route::get('/', [HospitalOverviewController::class, 'index'])->name('overview');
+        Route::get('/', [HospitalRegisterController::class, 'index'])->name('overview');
         Route::get('/add', [HospitalRegisterController::class, 'hospital'])->name('hospital-add');
-        Route::get('/list', [HospitalRegisterController::class, 'index'])->name('hospital-list');
+        // Route::get('/list', [HospitalRegisterController::class, 'index'])->name('hospital-list');
         Route::post('/save', [HospitalRegisterController::class, 'create'])->name('hospital-save');
+        Route::get('/delete/{id?}', [HospitalRegisterController::class, 'delete'])->name('hospital-delete');
         // Route::get('/edit/{id?}', [HospitalUserController::class, 'edit'])->name('hospital-user-edit');
         // Route::patch('/update', [HospitalUserController::class, 'update'])->name('hospital-user-update');
 
@@ -98,6 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AuthUser'], function () {
         Route::post('/save', [CommissionController::class, 'create'])->name('commission-save');
         Route::get('/edit/{id?}', [CommissionController::class, 'edit'])->name('commission-edit');
         Route::patch('/update', [CommissionController::class, 'update'])->name('commission-update');
+        Route::get('/delete/{id?}', [CommissionController::class, 'delete'])->name('commission-delete');
     });
 
 });

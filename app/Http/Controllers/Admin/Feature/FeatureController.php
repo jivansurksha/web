@@ -51,4 +51,11 @@ class FeatureController extends Controller
         $this->recordSave(Feature::class,$data);
         return redirect()->back()->with($this->toastrMsg('updated'));
     }
+
+    public function delete($id =null)
+    {
+        $feature=Feature::find($id);
+        $feature=$feature->delete($id);
+        return redirect()->back()->with($this->toastrMsg('deleted'));
+    }
 }

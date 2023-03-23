@@ -23,8 +23,10 @@ class FeatureDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
+        $str = "'abhay'";
         return (new EloquentDataTable($query))
         ->addColumn('action', function($row){
+            $model="'feature'";
             return '<div class="dropdown">
                         <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
                             <i data-feather="more-vertical"></i>
@@ -34,7 +36,7 @@ class FeatureDataTable extends DataTable
                                 <i data-feather="edit-2" class="me-50"></i>
                                 <span>Edit</span>
                             </a>
-                            <a class="dropdown-item" onClick="deleteConfirmation('.$row->id.')">
+                            <a class="dropdown-item" onClick="deleteConfirmation('.$row->id.','.$model.')">
                                 <i data-feather="trash" class="me-50"></i>
                                 <span>Delete</span>
                             </a>

@@ -312,7 +312,53 @@
       }
     });
 
+    //Hospital
+    $("#hospitals-table").DataTable({
+        processing: true,
+        serverSide: true,
+        ajax:"hospital",
+        data: {
+        _token: $('input[name="_token"]').val()
+        },
+        columns: [
+        // { data: 'responsive_id'},
+        {data: 'id', name: 'id',
+            orderable: false,
+            searchable: false,
+        },
+        { data: 'user_id', name: 'Owner Name'},
+        { data: 'contact_person', name: 'Contact Person'},
+        { data: 'phone', name: 'Phone'},
+        { data: 'email', name: 'Email'},
+        { data: 'org_name', name: 'Hospital Name'},
+        { data: 'reg_number', name: 'Reg Number'},
+        { data: 'speciality', name: 'Speciality'},
+        { data: 'address', name: 'Address'},
+        { data: 'state_id', name: 'State'},
+        { data: 'city_id', name: 'City'},
+        { data: 'pincode', name: 'Pincode'},
+        // { data: 'Hospital Name', name: 'Hospital Name'},
+        // { data: 'Commission Percentage',name: 'Commission Percentage' },
+        // { data: 'Commission Flat Rate',name: 'Commission Flat Rate' },
+        { data: 'is_active',name: 'is_active' },
+        { data: 'action',name: 'action' }
+        ],
+        columnDefs: [
+        {
+            className: 'control',
+            orderable: false,
+            targets: 0
+        }
 
+        ],
+        language: {
+        paginate: {
+            // remove previous & next text from pagination
+            previous: '&nbsp;',
+            next: '&nbsp;'
+        }
+        }
+    });
 
       // Filter form control to default size for all tables
   $('.dataTables_filter .form-control').removeClass('form-control-sm');
@@ -322,12 +368,19 @@
 
 
 //sweet alert
-function deleteConfirmation(id,model){
+function deleteConfirmation(id,type){
+
     var id = id;
-    if(model=='feature'){
-        var url ='';
-    }else if(model=='amenity'){
-        var url ='';
+    var type = type;
+
+    if(type=='feature'){
+        var url ='feature/delete/'+id;
+    }else if(type=='amenity'){
+        var url ='amenity/delete/'+id;
+    }else if(type=='user'){
+        var url ='user/delete/'+id;
+    }else if(type=='hospital'){
+        var url ='hospital/delete/'+id;
     }
 
         Swal.fire({
@@ -343,14 +396,24 @@ function deleteConfirmation(id,model){
             buttonsStyling: false
         }).then(function (result) {
             if (result.value) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
-                customClass: {
-                confirmButton: 'btn btn-success'
-                }
-            });
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: {},
+                    dataType: "html",
+                    success: function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Deleted!',
+                            text: 'Your file has been deleted.',
+                            customClass: {
+                            confirmButton: 'btn btn-success'
+                            },
+                        });
+                        location.reload();
+                    }
+                });
+
             } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire({
                 title: 'Cancelled',

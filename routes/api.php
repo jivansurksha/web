@@ -43,4 +43,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     // Hospital List
     Route::get('/hospital-list', [HospitalRegisterController::class, 'getHospitalList'])->name('hospital-list');
     Route::get('/hospital-show/{id?}', [HospitalRegisterController::class, 'getHospitalById'])->name('hospital-show');
+    Route::get('/hospital-byuser/{id?}', [HospitalRegisterController::class, 'getHospitalByUserId'])->name('hospital-byuserid');
+
 });

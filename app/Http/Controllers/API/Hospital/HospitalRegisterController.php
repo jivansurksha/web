@@ -75,4 +75,13 @@ class HospitalRegisterController extends Controller
         }
         return bad('Invalid Id');
     }
+
+    public function getHospitalByUserId($userId=null)
+    {
+        if($userId!=null){
+            $hospitals = Profile::where('user_id',$userId)->with('owner','creator')->get()->first();
+            return ok($hospitals);
+        }
+        return bad('Invalid Id');
+    }
 }
