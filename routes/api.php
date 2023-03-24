@@ -32,6 +32,7 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('/user-update', [SignUpController::class, 'userUpdate'])->name('user-update');
     Route::post('/change-password', [SignUpController::class, 'changePassword'])->name('change-password');
     Route::get('/logout', [SignInController::class, 'logout'])->name('logout');
+    Route::get('/user-details/{id}', [SignInController::class, 'getUserDetails'])->name('user-details');
 
     //hospital user registration
     Route::get('/feature-list', [HospitalRegisterController::class, 'getFeatureList'])->name('getFeatureList');
