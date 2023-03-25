@@ -78,7 +78,6 @@ class SignUpController extends Controller
         $rules=[
             'first_name' => 'required|string:30',
             'last_name' => 'required|string:30',
-            'user_name' => 'required|unique:users,user_name',
             'gender' => 'required|string:30',
             // 'user_type' => 'required|max:30',
             'password' => 'required',
