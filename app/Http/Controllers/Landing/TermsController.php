@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Controllers\Landing;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+
+class TermsController extends Controller
+{
+    public function index()
+    {
+      $pageConfigs = ['pageHeader' => true];
+
+      return view('landing.terms', ['pageConfigs' => $pageConfigs]);
+    }
+
+}

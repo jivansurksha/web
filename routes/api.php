@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Hospital\AppointmentController;
 use App\Http\Controllers\API\Hospital\HospitalRegisterController;
 use App\Http\Controllers\API\Hospital\SignInController;
 use App\Http\Controllers\API\Hospital\SignUpController;
@@ -46,4 +47,11 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::get('/hospital-show/{id?}', [HospitalRegisterController::class, 'getHospitalById'])->name('hospital-show');
     Route::get('/hospital-byuser/{id?}', [HospitalRegisterController::class, 'getHospitalByUserId'])->name('hospital-byuserid');
 
+     // appointment
+    Route::post('/appointment', [AppointmentController::class, 'bookAppointment'])->name('appointment-create');
+    Route::get('/appointment-list/{profileId}', [AppointmentController::class, 'getAppointmentListByHospital'])->name('appointment-list');
+    Route::get('/appointment-show/{id?}', [AppointmentController::class, 'getAppointment'])->name('appointment-show');
+    Route::get('/appointment-byuser/{id?}', [AppointmentController::class, 'getAppointmentByUser'])->name('appointment-byuserid');
+    Route::get('/appointment-accept/{id?}', [AppointmentController::class, 'acceptAppointment'])->name('appointment-accept');
+    Route::get('/appointment-cancel/{id?}', [AppointmentController::class, 'cancelAppointment'])->name('appointment-cancel');
 });
