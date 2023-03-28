@@ -71,7 +71,11 @@ class AppointmentController extends Controller
     public function getAppointmentByUser($userId)
     {
         if($userId!=null){
-            $appointments = Booking::where('created_by',$userId)->with('patient','creator','hopital')->get();
+            $appointments = Booking::where('created_by',$userId)->with('patient','creator','hospital','hospital.owner')
+                                    ->whereHas('hospital.owner',function($q) use($userId){
+                                            $q->where('id',$userId);
+                                    })
+                                    ->get();
             return ok($appointments);
         }
         return bad('invalid Id');

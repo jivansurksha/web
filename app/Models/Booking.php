@@ -19,7 +19,7 @@ class Booking extends Model
         return $this->belongsTo(User::class,'created_by');
     }
 
-    public function hopital(){
+    public function hospital(){
         return $this->belongsTo(Profile::class,'booking_in');
     }
 
