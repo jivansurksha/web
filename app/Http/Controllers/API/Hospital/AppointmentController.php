@@ -23,6 +23,7 @@ class AppointmentController extends Controller
             'relationship' => 'required',
             'name' => 'required',
             'date' => 'required',
+            'pincode'=>'required|number',
             'gender' => 'required|string:30',
         ];
 
@@ -31,6 +32,7 @@ class AppointmentController extends Controller
         $patientData = $request->except('hospital_id','user_id');
 
         $patient = new Patient();
+
         $patientData['created_by']=$request->user_id;
         //patient data created
         $patient = $patient->create($patientData);

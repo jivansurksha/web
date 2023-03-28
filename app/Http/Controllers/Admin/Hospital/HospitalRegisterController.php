@@ -70,4 +70,34 @@ class HospitalRegisterController extends Controller
     {
 
     }
+    public function delete($id)
+    {
+        if($id!=null){
+            $profile = Profile::find($id);
+            $profile->delete();
+            return redirect()->back()->with($this->toastrMsg('Deleted'));
+        }
+    }
+
+    public function deactivateHospital($id)
+    {
+        if($id!=null){
+            $profile = Profile::find($id);
+            $profile->update([
+                'is_active'=>0
+            ]);
+            return redirect()->back()->with($this->toastrMsg('Deactivated'));
+        }
+    }
+
+    public function activateHospital($id)
+    {
+        if($id!=null){
+            $profile = Profile::find($id);
+            $profile->update([
+                'is_active'=>1
+            ]);
+            return redirect()->back()->with($this->toastrMsg('Activated'));
+        }
+    }
 }

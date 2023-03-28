@@ -16,21 +16,25 @@
         <div class="col-xl-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
+
                     <!-- Responsive Datatable -->
-                    <section id="responsive-datatable">
+                    <section id="responsive-datatable table">
                         <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                            <div class="card-header border-bottom">
-                                <h4 class="card-title">Hospital List</h4>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header border-bottom">
+                                        <h4 class="card-title">Hospital List</h4>
+                                    </div>
+                                    <div class="card-datatable" style="overflow-y: hidden">
+
+                                        {{$dataTable->table()}}
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-datatable">
-                                {{$dataTable->table()}}
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     </section>
+
                     <!--/ Responsive Datatable -->
                 </div>
             </div>

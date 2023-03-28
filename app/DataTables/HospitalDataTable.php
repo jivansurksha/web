@@ -25,8 +25,33 @@ class HospitalDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addColumn('action', function($row){
-            return '<a href="user/edit/'.$row->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+            $model="'hospital'";
+            if($row->is_active=1){
+                $statusLink = 'deactivate';
+            }else{
+                $statusLink = 'activate';
+            }
+            return '<div class="dropdown">
+                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                            <i data-feather="more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="hospital/edit/'.$row->id.'">
+                                <i data-feather="edit-2" class="me-50"></i>
+                                <span>Edit</span>
+                            </a>
+                            <a class="dropdown-item" onClick="deleteConfirmation('.$row->id.','.$model.')">
+                                <i data-feather="trash" class="me-50"></i>
+                                <span>Delete</span>
+                            </a>
+                            <a class="dropdown-item" href="hospital/'.$statusLink.'/'.$row->id.'">
+                                <i data-feather="edit-2" class="me-50"></i>
+                                <span>Change Status</span>
+                            </a>
+                        </div>
+                    </div>';
         })
+
         ->editColumn('user_id', function ($row) {
             return $row->owner->first_name;
         })
@@ -36,6 +61,13 @@ class HospitalDataTable extends DataTable
         ->editColumn('city_id', function ($row) {
             return $row->city !=null?$row->city->name:'';
         })
+        // ->editColumn('is_active', function ($row) {
+        //     if($row->is_active == 0){
+        //         return '<span class="badge rounded-pill badge-light-warning me-1">In Active</span>';
+        //     }else{
+        //         return '<span class="badge rounded-pill badge-light-primary me-1">Active</span>';
+        //     }
+        // })
 
         ->setRowId('id');
     }

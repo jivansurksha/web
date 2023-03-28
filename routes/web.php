@@ -73,11 +73,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AuthUser'], function () {
 
     //hospital
     Route::prefix('hospital')->group(function () {
-        Route::get('/', [HospitalRegisterController::class, 'index'])->name('overview');
+        Route::get('/', [HospitalRegisterController::class, 'index'])->name('hospital-list');
         Route::get('/add', [HospitalRegisterController::class, 'hospital'])->name('hospital-add');
         // Route::get('/list', [HospitalRegisterController::class, 'index'])->name('hospital-list');
         Route::post('/save', [HospitalRegisterController::class, 'create'])->name('hospital-save');
         Route::get('/delete/{id?}', [HospitalRegisterController::class, 'delete'])->name('hospital-delete');
+        Route::get('/activate/{id?}', [HospitalRegisterController::class, 'activateHospital'])->name('hospital-activate');
+        Route::get('/deactivate/{id?}', [HospitalRegisterController::class, 'deactivateHospital'])->name('hospital-deactivate');
         // Route::get('/edit/{id?}', [HospitalUserController::class, 'edit'])->name('hospital-user-edit');
         // Route::patch('/update', [HospitalUserController::class, 'update'])->name('hospital-user-update');
 

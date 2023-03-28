@@ -42,13 +42,13 @@ class AuthController extends Controller
     {
         $request->validate([
             'user_name' => 'required|string',
-            'password' => 'required|string',
+            'password' => 'required',
         ]);
 
         $credentials = $request->only('user_name', 'password');
 
         if(!Auth::attempt($credentials)){
-            return  redirect('/');
+            return redirect()->back()->with($this->toastrMsg('invalid credentials'));
         }
         return redirect($this->redirectTo);
     }

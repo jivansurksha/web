@@ -336,7 +336,7 @@
         { data: 'address', name: 'Address'},
         { data: 'state_id', name: 'State'},
         { data: 'city_id', name: 'City'},
-        { data: 'pincode', name: 'Pincode'},
+        { data: 'postcode', name: 'Pincode'},
         // { data: 'Hospital Name', name: 'Hospital Name'},
         // { data: 'Commission Percentage',name: 'Commission Percentage' },
         // { data: 'Commission Flat Rate',name: 'Commission Flat Rate' },
@@ -348,6 +348,29 @@
             className: 'control',
             orderable: false,
             targets: 0
+        },
+        {
+             // Label
+          targets: -2,
+          render: function (data, type, full, meta) {
+
+            var $status_number = full['is_active'];
+            console.log($status_number);
+            var $status = {
+              0: { title: 'Inactive', class: 'badge-light-danger' },
+              1: { title: 'Active', class: 'badge-light-success' }
+            };
+            if (typeof $status[$status_number] === 'undefined') {
+              return data;
+            }
+            return (
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
+            );
+          }
         }
 
         ],

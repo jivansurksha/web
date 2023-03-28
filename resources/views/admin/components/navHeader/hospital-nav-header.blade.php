@@ -14,7 +14,7 @@
       <a
         class="nav-link {{Route::currentRouteName() == 'hospital-list' ? 'active' :''}}"
         id="profile-tab"
-        href="{{url('admin/user/add')}}"
+        href="{{url('admin/hospital')}}"
         aria-controls="profile"
         role="tab"
         aria-selected="false"
@@ -25,7 +25,7 @@
         <a
           class="nav-link {{Route::currentRouteName() == 'hospital-add' ? 'active' :''}}"
           id="profile-tab"
-          href="{{url('admin/user/add')}}"
+          href="{{url('admin/hospital/add')}}"
           aria-controls="profile"
           role="tab"
           aria-selected="false"
