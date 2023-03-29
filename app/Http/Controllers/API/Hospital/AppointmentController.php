@@ -33,7 +33,7 @@ class AppointmentController extends Controller
             'relationship' => 'required',
             'name' => 'required',
             'date' => 'required',
-            'pincode'=>'required|number',
+            'pincode'=>'required',
             'gender' => 'required|string:30',
         ];
 
@@ -81,9 +81,9 @@ class AppointmentController extends Controller
     public function getAppointmentByUser($userId)
     {
         if($userId!=null){
-            $appointments = Booking::where('created_by',$userId)->with('patient','creator','hospital','hospital.owner')
-                                    ->whereHas('hospital.owner',function($q) use($userId){
-                                            $q->where('id',$userId);
+            $appointments = Booking::with('patient','creator','hospital')
+                                    ->whereHas('hospital',function($q) use($userId){
+                                            $q->where('user_id',$userId);
                                     })
                                     ->get();
             return ok($appointments);
