@@ -9,12 +9,22 @@ use App\Models\Feature;
 use App\Models\Patient;
 use App\Models\Profile;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AppointmentController extends Controller
 {
+    public $currentDate ;
+    public $currentTime;
+
+    public function __construct()
+    {
+        $this->currentDate = Carbon::now()->format('Y-m-d');
+        $this->currentTime = Carbon::now()->format('H:i:s');
+    }
+
     public function bookAppointment(Request $request)
     {
         $rules=[
@@ -87,23 +97,41 @@ class AppointmentController extends Controller
             $appointments = Booking::find($id)->first();
             $appointments->update([
                 'status'=>'confirmed',
+                'admit_date'=> $this->currentDate,
+                'admit_time'=> $this->currentTime,
             ]);
             return ok($appointments);
         }
         return bad('invalid Id');
     }
 
-    public function cancelAppointment($id)
+    public function cancelAppointment(Request $request)
     {
-        if($id!=null){
-            $appointments = Booking::find($id)->first();
+        if($request->id!=null){
+            $appointments = Booking::find($request->id)->first();
             $appointments->update([
                 'status'=>'cancel',
+                'cancel_reason'=>$request->reason,
             ]);
             return ok($appointments);
         }
         return bad('invalid Id');
     }
 
+    public function completedAppointment(Request $request)
+    {
+        if($request->id!=null){
+            $appointments = Booking::find($request->id)->first();
+            $appointments->update([
+                'status'=>'completed',
+                'net_amount'=>$request->net_amount,
+                'discharge_date'=>$request->discharge_date ?? $this->currentDate,
+                'discharge_time'=>$request->discharge_time ?? $this->currentTime,
+                'discharge_summery'=>$request->discharge_summery,
+            ]);
+            return ok($appointments);
+        }
+        return bad('invalid Id');
+    }
 
 }

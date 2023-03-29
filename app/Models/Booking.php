@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
-    protected $fillable = ['patient_id', 'booking_in','booking_for','status','date','time','created_by'];
+    protected $fillable = ['patient_id', 'booking_in','booking_for','status','cancel_reason','net_amount','admit_date','admit_time','discharge_date','discharge_time','discharge_summery','date','time','created_by'];
 	protected $dates = ['created_at', 'updated_at'];
 
     public function patient(){
@@ -20,7 +20,7 @@ class Booking extends Model
     }
 
     public function hospital(){
-        return $this->belongsTo(Profile::class,'booking_in');
+        return $this->hasMany(Profile::class,'booking_in');
     }
 
 }

@@ -53,5 +53,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::get('/appointment-show/{id?}', [AppointmentController::class, 'getAppointment'])->name('appointment-show');
     Route::get('/appointment-byuser/{id?}', [AppointmentController::class, 'getAppointmentByUser'])->name('appointment-byuserid');
     Route::get('/appointment-accept/{id?}', [AppointmentController::class, 'acceptAppointment'])->name('appointment-accept');
-    Route::get('/appointment-cancel/{id?}', [AppointmentController::class, 'cancelAppointment'])->name('appointment-cancel');
+    Route::post('/appointment-cancel', [AppointmentController::class, 'cancelAppointment'])->name('appointment-cancel');
+    Route::post('/appointment-completed', [AppointmentController::class, 'completedAppointment'])->name('appointment-completed');
 });
