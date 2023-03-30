@@ -94,7 +94,7 @@ class AppointmentController extends Controller
     public function acceptAppointment($id)
     {
         if($id!=null){
-            $appointments = Booking::find($id)->first();
+            $appointments = Booking::find($id);
             $appointments->update([
                 'status'=>'confirmed',
                 'admit_date'=> $this->currentDate,
@@ -108,7 +108,7 @@ class AppointmentController extends Controller
     public function cancelAppointment(Request $request)
     {
         if($request->id!=null){
-            $appointments = Booking::find($request->id)->first();
+            $appointments = Booking::find($request->id);
             $appointments->update([
                 'status'=>'cancel',
                 'cancel_reason'=>$request->reason,
@@ -121,7 +121,7 @@ class AppointmentController extends Controller
     public function completedAppointment(Request $request)
     {
         if($request->id!=null){
-            $appointments = Booking::find($request->id)->first();
+            $appointments = Booking::find($request->id);
             $appointments->update([
                 'status'=>'completed',
                 'net_amount'=>$request->net_amount,
