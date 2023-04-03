@@ -59,7 +59,7 @@ class SignInController extends Controller
 
     public function getUserDetails($id)
     {
-        $user = User::find($id)->with('state','city');
+        $user = User::find($id)->with('state','city')->first();
         return ok($user);
     }
 }
