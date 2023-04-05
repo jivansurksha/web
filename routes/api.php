@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Hospital\AppointmentController;
 use App\Http\Controllers\API\Hospital\HospitalRegisterController;
 use App\Http\Controllers\API\Hospital\SignInController;
 use App\Http\Controllers\API\Hospital\SignUpController;
+use App\Http\Controllers\API\Patient\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,4 +56,17 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::get('/appointment-accept/{id?}', [AppointmentController::class, 'acceptAppointment'])->name('appointment-accept');
     Route::post('/appointment-cancel', [AppointmentController::class, 'cancelAppointment'])->name('appointment-cancel');
     Route::post('/appointment-completed', [AppointmentController::class, 'completedAppointment'])->name('appointment-completed');
+
+    // Patient App Api
+
+     // appointment
+    Route::prefix('patient')->group(function () {
+        Route::post('/checkmobile', [RegisterController::class, 'checkMobile'])->name('check-mobile');
+        Route::post('/register', [RegisterController::class, 'signUp'])->name('register-patient');
+        Route::post('/update', [RegisterController::class, 'userUpdate'])->name('patient-update');
+        Route::post('/password', [RegisterController::class, 'changePassword'])->name('patient-change-password');
+        Route::get('/details/{id}', [RegisterController::class, 'getUserDetails'])->name('patient-details');
+    });
+
+
 });

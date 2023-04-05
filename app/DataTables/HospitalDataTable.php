@@ -26,7 +26,7 @@ class HospitalDataTable extends DataTable
         return (new EloquentDataTable($query))
         ->addColumn('action', function($row){
             $model="'hospital'";
-            if($row->is_active=1){
+            if($row->is_active==1){
                 $statusLink = 'deactivate';
             }else{
                 $statusLink = 'activate';
