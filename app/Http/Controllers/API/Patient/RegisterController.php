@@ -60,10 +60,9 @@ class RegisterController extends Controller
         $params = $this->validate($userRequest,$rules);
 
         $user = $userRequest->only('first_name','last_name','user_type','email','mobile','state_id','city_id','postcode','gender','password');
-
-        // $user['password']= Hash::make($userRequest['password']);
+        $user['password']= $userRequest['password'] !=null ? Hash::make($user['password']) : null;
         $user['country_id'] = 101;
-        $user['user_name']=$user['email'];
+        $user['user_name']=$user['mobile'];
 
         $user = $this->recordSave(User::class,$user);
 
