@@ -31,4 +31,14 @@ class Profile extends Model
     public function city(){
         return $this->belongsTo(City::class,'city_id');
     }
+
+    public function wallet()
+    {
+        return $this->morphMany(Wallet::class, 'walletable','model_type', 'model_id');
+    }
+
+    public function withdrawrequest()
+    {
+        return $this->morphMany(WithdrawRequest::class, 'withdrable','model_type', 'model_id');
+    }
 }

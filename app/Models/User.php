@@ -17,7 +17,6 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = ['first_name', 'last_name', 'user_name','email','gender','password','is_admin', 'state_id','city_id','user_type','facebook_id','google_id','form_of_login'];
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-
     //here is many to one polymorph
     public function userAccount()
     {
@@ -53,6 +52,16 @@ class User extends Authenticatable implements JWTSubject
 
     public function profile(){
         return $this->hasMany(Profile::class,'id');
+    }
+
+    public function wallet()
+    {
+        return $this->morphMany(Wallet::class, 'walletable','model_type', 'model_id');
+    }
+
+    public function withdrawrequest()
+    {
+        return $this->morphMany(WithdrawRequest::class, 'withdrable','model_type', 'model_id');
     }
 
     /**

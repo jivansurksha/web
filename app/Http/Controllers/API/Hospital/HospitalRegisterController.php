@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Hospital;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Amenity;
+use App\Models\Facility;
 use App\Models\Feature;
 use App\Models\Profile;
 use App\Models\User;
@@ -27,7 +28,6 @@ class HospitalRegisterController extends Controller
 
     public function hospitalRegister(ProfileRequest $profileRequest)
     {
-
         $hospitalInfo=null;
 
         $profileRequest['profile_feature_id'] = json_encode($profileRequest->profile_feature_id,true);
@@ -71,6 +71,23 @@ class HospitalRegisterController extends Controller
     {
         if($id!=null){
             $hospitals = Profile::where('id',$id)->with('owner','creator')->get()->first();
+            $amenitys = json_decode($hospitals->amenity_id,true);
+            $features = json_decode($hospitals->feature_id,true);
+            $amenity=[];$feature=[];
+            if($amenitys){
+                foreach($amenitys as $amen){
+                    $amenity[] = Amenity::where('id',$amen)->get()->first();
+                }
+            }
+
+            $hospitals['amenity']=$amenity;
+            if($features){
+                foreach($features as $feat){
+                    $feature[] = Feature::where('id',$feat)->get()->first();
+                }
+            }
+            $hospitals['feature']=$feature;
+
             return ok($hospitals);
         }
         return bad('Invalid Id');
@@ -80,6 +97,24 @@ class HospitalRegisterController extends Controller
     {
         if($userId!=null){
             $hospitals = Profile::where('user_id',$userId)->with('owner','creator')->get();
+            foreach($hospitals as $hospital){
+                $amenitys = json_decode($hospital->amenity_id,true);
+                $features = json_decode($hospital->feature_id,true);
+                $amenity=[];$feature=[];
+                if($amenitys){
+                    foreach($amenitys as $amen){
+                        $amenity[] = Amenity::where('id',$amen)->get()->first();
+                    }
+                }
+
+                $hospital->amenity=$amenity;
+                if($features){
+                    foreach($features as $feat){
+                        $feature[] = Feature::where('id',$feat)->get()->first();
+                    }
+                }
+                $hospital->feature=$feature;
+            }
             return ok($hospitals);
         }
         return bad('Invalid Id');
