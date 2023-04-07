@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/rsranjan505/public_html/jivansurksha
-    - /bin/cp .env $DEPLOYPATH
+    - /bin/cp -R config $DEPLOYPATH
