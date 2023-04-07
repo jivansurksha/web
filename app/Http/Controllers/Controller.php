@@ -36,7 +36,6 @@ class Controller extends BaseController
             if(! isset($model->id)){
                 return false;
             }
-
             collect($req)->map(function($val,$key) use($model,$extra_data){
 
                 if($key!='_token' && $key!='_method'){
@@ -47,7 +46,6 @@ class Controller extends BaseController
                             $model->$key=$extra_data_val;
                         });
                     }
-
                 }
             });
         }else{
@@ -65,7 +63,6 @@ class Controller extends BaseController
                 }
             });
         }
-
         return $model->save() ? $model : false;
     }
 
