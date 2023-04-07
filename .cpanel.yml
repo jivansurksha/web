@@ -1,5 +1,11 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rsranjan505/public_html/
-    - /bin/cp -R jivansurksha $DEPLOYPATH
+    - export DEPLOYPATH=/home/rsranjan505/public_html/jivansurksha
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R database $DEPLOYPATH
+    - /bin/cp -R resources $DEPLOYPATH
+    - /bin/cp -R routes $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R lang $DEPLOYPATH
+    - /bin/cp -R config $DEPLOYPATH
