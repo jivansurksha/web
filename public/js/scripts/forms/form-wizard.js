@@ -66,7 +66,7 @@ $(function () {
       var $this = $(this);
       $this.validate({
         rules: {
-          username: {
+        user_name: {
             required: true
           },
           email: {
@@ -79,40 +79,16 @@ $(function () {
             required: true,
             equalTo: '#password'
           },
-          'first-name': {
+          'first_name': {
             required: true
           },
-          'last-name': {
+          'last_name': {
             required: true
           },
-          address: {
-            required: true
+          'gender': {
+            required:true
           },
-          landmark: {
-            required: true
-          },
-          country: {
-            required: true
-          },
-          language: {
-            required: true
-          }
-        //   twitter: {
-        //     required: true,
-        //     url: true
-        //   },
-        //   facebook: {
-        //     required: true,
-        //     url: true
-        //   },
-        //   google: {
-        //     required: true,
-        //     url: true
-        //   },
-        //   linkedin: {
-        //     required: true,
-        //     url: true
-        //   }
+
         }
       });
     });
@@ -140,13 +116,28 @@ $(function () {
       .find('.btn-submit')
       .on('click', function () {
         var isValid = $(this).parent().siblings('form').valid();
-        var formData = $('form').serialize();
+        var formData = $('form').serializeArray();
+
+        var x = new FormData();
+
+        jQuery.each(formData, function(i, field) {
+            x.append(field.name, field.value);
+        });
+
+        jQuery.each(jQuery('#hospital_images')[0].files, function(i, file) {
+            x.append('images[]', file);
+        });
+
         if (isValid) {
           $.ajax({
             type: "post",
             url: "save",
-            data: formData,
-            dataType: "dataType",
+            data: x,
+            contentType: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function (response) {
                 console.log(response);
             }

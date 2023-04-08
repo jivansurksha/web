@@ -312,76 +312,7 @@
       }
     });
 
-    //Hospital
-    $("#hospitals-table").DataTable({
-        processing: true,
-        serverSide: true,
-        ajax:"hospital",
-        data: {
-        _token: $('input[name="_token"]').val()
-        },
-        columns: [
-        // { data: 'responsive_id'},
-        {data: 'id', name: 'id',
-            orderable: false,
-            searchable: false,
-        },
-        { data: 'user_id', name: 'Owner Name'},
-        { data: 'contact_person', name: 'Contact Person'},
-        { data: 'phone', name: 'Phone'},
-        { data: 'email', name: 'Email'},
-        { data: 'org_name', name: 'Hospital Name'},
-        { data: 'reg_number', name: 'Reg Number'},
-        { data: 'speciality', name: 'Speciality'},
-        { data: 'address', name: 'Address'},
-        { data: 'state_id', name: 'State'},
-        { data: 'city_id', name: 'City'},
-        { data: 'postcode', name: 'Pincode'},
-        // { data: 'Hospital Name', name: 'Hospital Name'},
-        // { data: 'Commission Percentage',name: 'Commission Percentage' },
-        // { data: 'Commission Flat Rate',name: 'Commission Flat Rate' },
-        { data: 'is_active',name: 'is_active' },
-        { data: 'action',name: 'action' }
-        ],
-        columnDefs: [
-        {
-            className: 'control',
-            orderable: false,
-            targets: 0
-        },
-        {
-             // Label
-          targets: -2,
-          render: function (data, type, full, meta) {
 
-            var $status_number = full['is_active'];
-            console.log($status_number);
-            var $status = {
-              0: { title: 'Inactive', class: 'badge-light-danger' },
-              1: { title: 'Active', class: 'badge-light-success' }
-            };
-            if (typeof $status[$status_number] === 'undefined') {
-              return data;
-            }
-            return (
-              '<span class="badge rounded-pill ' +
-              $status[$status_number].class +
-              '">' +
-              $status[$status_number].title +
-              '</span>'
-            );
-          }
-        }
-
-        ],
-        language: {
-        paginate: {
-            // remove previous & next text from pagination
-            previous: '&nbsp;',
-            next: '&nbsp;'
-        }
-        }
-    });
 
       // Filter form control to default size for all tables
   $('.dataTables_filter .form-control').removeClass('form-control-sm');
@@ -391,19 +322,13 @@
 
 
 //sweet alert
-function deleteConfirmation(id,type){
+function deleteConfirmation(id,model){
 
     var id = id;
-    var type = type;
-
-    if(type=='feature'){
-        var url ='feature/delete/'+id;
-    }else if(type=='amenity'){
-        var url ='amenity/delete/'+id;
-    }else if(type=='user'){
-        var url ='user/delete/'+id;
-    }else if(type=='hospital'){
-        var url ='hospital/delete/'+id;
+    if(model=='feature'){
+        var url ='';
+    }else if(model=='amenity'){
+        var url ='';
     }
 
         Swal.fire({
@@ -419,24 +344,14 @@ function deleteConfirmation(id,type){
             buttonsStyling: false
         }).then(function (result) {
             if (result.value) {
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {},
-                    dataType: "html",
-                    success: function () {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Deleted!',
-                            text: 'Your file has been deleted.',
-                            customClass: {
-                            confirmButton: 'btn btn-success'
-                            },
-                        });
-                        location.reload();
-                    }
-                });
-
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                customClass: {
+                confirmButton: 'btn btn-success'
+                }
+            });
             } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire({
                 title: 'Cancelled',

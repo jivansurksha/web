@@ -21,7 +21,7 @@ class Profile extends Model
     //here is many to one polymorph
     public function profileAvtar()
     {
-        return $this->morphOne(AssetFile::class, 'pictureable');
+        return $this->morphOne(AssetFile::class, 'pictureable','model_type', 'model_id');
     }
 
     public function state(){

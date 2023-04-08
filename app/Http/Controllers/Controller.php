@@ -10,6 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class Controller extends BaseController
 {
@@ -68,44 +69,41 @@ class Controller extends BaseController
 
 
 
-    // public function fileUpload($file, $model, $storageType='local'): array
-    // {
-    //     try {
-    //         if($storageType == 'local'){
-    //             $extension = $file->getClientOriginalExtension();
-    //             $filename = $model->id.'_'.time().'.'.$extension;
-    //             if($model->staff){
-    //                 $filename = $model->staff->employeeId.'_'.time().'.'.$extension;
-    //             }
+    public function fileUpload($file, $model, $storageType='local'): array
+    {
+        try {
+            if($storageType == 'local'){
+                $extension = $file->getClientOriginalExtension();
+                $filename = $model->id.'_'.time().'.'.$extension;
 
-    //             $path = tenant()->id.'/'.$model->getTable().'/';
 
-    //             $folder = public_path('/storage/'.$path);
-    //             if (!File::exists($folder)) {
-    //             File::makeDirectory($folder, 0775, true, true);
-    //             }
+                $path = 'images'.'/'.$model->getTable().'/';
 
-    //             $file->move($folder, $filename);
-    //             $image = url('/storage/' . $path . $filename);
+                $folder = public_path('/storage/'.$path);
+                if (!File::exists($folder)) {
+                File::makeDirectory($folder, 0775, true, true);
+                }
 
-    //             $datas = [
-    //             'name' => $filename,
-    //             'title' => $filename,
-    //             'file' =>'/storage/'.$path.$filename,
-    //             'url'=> $image,
-    //             'originalName'=> $file->getClientOriginalName(),
-    //             'mimeType' =>  $file->getClientMimeType(),
-    //             'addedBy' => auth()->user()->id,
-    //             ];
-    //             return $datas;
-    //         }
-    //         else{
-    //             return [];
-    //         }
-    //     } catch (Exception $e) {
-    //         return [];
-    //     }
-    // }
+                $file->move($folder, $filename);
+                $image = url('/storage/' . $path . $filename);
+
+                $datas = [
+                'filename' => $filename,
+                'filepath' =>'/storage/'.$path.$filename,
+                'url'=> $image,
+                'original_name'=> $file->getClientOriginalName(),
+                'filetype' =>  $file->getClientMimeType(),
+                'created_by' => auth()->user()->id,
+                ];
+                return $datas;
+            }
+            else{
+                return [];
+            }
+        } catch (Exception $e) {
+            return [];
+        }
+    }
 
 
 

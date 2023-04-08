@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AssetFile extends Model
 {
     use HasFactory;
-    protected $fillable = ['model_id','model_type','filename', 'filetype','filepath','width','height','size','is_active'];
+    protected $fillable = ['model_id','model_type','filename', 'filetype','filepath','original_name','url','width','height','size','is_active','created_by'];
 	protected $dates = ['created_at', 'updated_at'];
 
    //here is polymorph relation to profile or user

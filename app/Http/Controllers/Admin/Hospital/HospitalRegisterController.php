@@ -42,8 +42,9 @@ class HospitalRegisterController extends Controller
         return view('admin.hospital.add', ['pageConfigs' => $this->pageConfigs,'data'=>$data]);
     }
 
-    public function create(UserRequest $userRequest,ProfileRequest $profileRequest)
+    public function create(UserRequest $userRequest,ProfileRequest $profileRequest, Request $request)
     {
+
         $userInfo = $userRequest->only('first_name','last_name','user_name','email','mobile','state_id','city_id','postcode','gender','password');
         $userInfo['password']= Hash::make($userInfo['password']);
         $user = $this->recordSave(User::class,$userInfo);
@@ -60,9 +61,18 @@ class HospitalRegisterController extends Controller
             $hospitalInfo['user_id']=$user->id;
             $hospitalInfo['created_by']=auth('web')->user()->id;
             $profile = $this->recordSave(Profile::class,$hospitalInfo);
+            if($profile){
+                if($request->files !=null){
+                    foreach($request->all()['images'] as $file){
+                        $assetdata = $this->fileUpload($file,$profile,'local');
+                        $profile->profileAvtar()->create($assetdata);
+                    }
+                }
+                return redirect()->back()->with($this->toastrMsg('created'));
+            }
         }
 
-        return redirect()->back()->with($this->toastrMsg('created'));
+        return redirect()->back()->with($this->toastrMsg('invalid'));
 
     }
 
