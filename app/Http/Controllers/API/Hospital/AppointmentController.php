@@ -134,4 +134,15 @@ class AppointmentController extends Controller
         return bad('invalid Id');
     }
 
+    //Patient section
+
+    public function getAppointmentByPatientUser($userId)
+    {
+        if($userId!=null){
+            $appointments = Booking::where('created_by',$userId)->with('patient','creator','hospital')->get();
+            return ok($appointments);
+        }
+        return bad('invalid Id');
+    }
+
 }

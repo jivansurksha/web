@@ -66,6 +66,10 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/update', [RegisterController::class, 'userUpdate'])->name('patient-update');
         Route::post('/password', [RegisterController::class, 'changePassword'])->name('patient-change-password');
         Route::get('/details/{id}', [RegisterController::class, 'getUserDetails'])->name('patient-details');
+
+        //get Appointment
+        Route::get('/appointment/{userid?}', [AppointmentController::class, 'getAppointmentByPatientUser'])->name('appointment-patient');
+        Route::get('/appointment/{appointmentid?}', [AppointmentController::class, 'getAppointment'])->name('appointment-show');
     });
 
 
