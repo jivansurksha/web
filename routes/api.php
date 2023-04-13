@@ -69,7 +69,6 @@ Route::group(['middleware' => 'api'], function ($router) {
 
         //get Appointment
         Route::get('/appointment/{userid?}', [AppointmentController::class, 'getAppointmentByPatientUser'])->name('appointment-patient');
-        Route::get('/appointment/{appointmentid?}', [AppointmentController::class, 'getAppointment'])->name('appointment-show');
     });
 
 
