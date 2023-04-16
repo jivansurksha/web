@@ -22,5 +22,4 @@ class Booking extends Model
     public function hospital(){
         return $this->belongsTo(Profile::class,'booking_in');
     }
-
 }
