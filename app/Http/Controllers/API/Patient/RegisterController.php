@@ -102,7 +102,7 @@ class RegisterController extends Controller
 
     public function getUserDetails($id)
     {
-        $user = User::with('state','city')->find($id);
+        $user = User::with('state','city','userAvtar')->find($id);
         return ok($user);
     }
 }
