@@ -193,6 +193,45 @@
 
 
 
+    $("#hospitals-table").DataTable({
+        processing: true,
+        serverSide: true,
+        ajax:"hospital",
+        data: {
+            _token: $('input[name="_token"]').val()
+            },
+        columns: [
+            // { data: 'responsive_id'},
+            {data: 'id', name: 'id',
+                orderable: false,
+                searchable: false,
+            },
+            { data: 'name', name: 'name'},
+            { data: 'type',name: 'type' },
+            { data: 'description',name: 'description' },
+            { data: 'is_active',name: 'is_active' },
+            { data: 'created_at',name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
+            { data: 'action',name: 'action' }
+        ],
+        columnDefs: [
+            {
+            className: 'control',
+            orderable: false,
+            targets: 0
+            }
+
+        ],
+        language: {
+            paginate: {
+            // remove previous & next text from pagination
+            previous: '&nbsp;',
+            next: '&nbsp;'
+            }
+        }
+    });
+
+
     //amenity
     $("#amenity-table").DataTable({
         processing: true,

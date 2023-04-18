@@ -66,7 +66,7 @@ $(function () {
       var $this = $(this);
       $this.validate({
         rules: {
-        user_name: {
+          username: {
             required: true
           },
           email: {
@@ -79,16 +79,40 @@ $(function () {
             required: true,
             equalTo: '#password'
           },
-          'first_name': {
+          'first-name': {
             required: true
           },
-          'last_name': {
+          'last-name': {
             required: true
           },
-          'gender': {
-            required:true
+          address: {
+            required: true
           },
-
+          landmark: {
+            required: true
+          },
+          country: {
+            required: true
+          },
+          language: {
+            required: true
+          }
+        //   twitter: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   facebook: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   google: {
+        //     required: true,
+        //     url: true
+        //   },
+        //   linkedin: {
+        //     required: true,
+        //     url: true
+        //   }
         }
       });
     });
@@ -116,28 +140,13 @@ $(function () {
       .find('.btn-submit')
       .on('click', function () {
         var isValid = $(this).parent().siblings('form').valid();
-        var formData = $('form').serializeArray();
-
-        var x = new FormData();
-
-        jQuery.each(formData, function(i, field) {
-            x.append(field.name, field.value);
-        });
-
-        jQuery.each(jQuery('#hospital_images')[0].files, function(i, file) {
-            x.append('images[]', file);
-        });
-
+        var formData = $('form').serialize();
         if (isValid) {
           $.ajax({
             type: "post",
             url: "save",
-            data: x,
-            contentType: false,
-            processData: false,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
+            data: formData,
+            dataType: "dataType",
             success: function (response) {
                 console.log(response);
             }

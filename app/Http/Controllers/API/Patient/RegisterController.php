@@ -39,7 +39,8 @@ class RegisterController extends Controller
             'otp'=> $number
         ]);
         $userdata = [];
-        $user = User::where(['user_name'=>$data['mobile'],'user_type'=>'app','user_type'=>'bro'])->get()->first();
+        $user = User::where(['user_name'=>$data['mobile']])
+                        ->whereIn('user_type',['app','bro'])->get()->first();
         $userdata['user'] = $user;
         $userdata['otp'] = $number;
 
@@ -65,6 +66,14 @@ class RegisterController extends Controller
         $user['user_name']=$user['mobile'];
 
         $user = $this->recordSave(User::class,$user);
+        $token = Auth::login($user);
+        if($user){
+            if($userRequest->avatar !=null){
+                $assetdata = $this->fileUpload($userRequest->avatar,$user,'local');
+                $assetdata['created_by'] =  $user->id;
+                $user->userAvtar()->create($assetdata);
+            }
+        }
 
         return created($user);
     }
