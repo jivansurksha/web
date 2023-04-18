@@ -88,6 +88,14 @@ class RegisterController extends Controller
 
         $params = $this->validate($userRequest,$rules);
         $user = $this->recordSave(User::class,$userRequest);
+        $token = Auth::login($user);
+        if($user){
+            if($userRequest->avatar !=null){
+                $assetdata = $this->fileUpload($userRequest->avatar,$user,'local');
+                $assetdata['created_by'] =  $user->id;
+                $user->userAvtar()->create($assetdata);
+            }
+        }
         return created($user,'User Updated successfully');
     }
 
