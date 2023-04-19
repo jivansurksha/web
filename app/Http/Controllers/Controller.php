@@ -93,7 +93,7 @@ class Controller extends BaseController
                 'url'=> $image,
                 'original_name'=> $file->getClientOriginalName(),
                 'filetype' =>  $file->getClientMimeType(),
-                'created_by' => auth()->user()->id,
+                'created_by' => auth()->user() ? auth()->user()->id : null,
                 ];
                 return $datas;
             }
