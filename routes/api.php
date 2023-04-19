@@ -35,6 +35,7 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('/change-password', [SignUpController::class, 'changePassword'])->name('change-password');
     Route::get('/logout', [SignInController::class, 'logout'])->name('logout');
     Route::get('/user-details/{id}', [SignInController::class, 'getUserDetails'])->name('user-details');
+    Route::post('/avatar-upload', [SignUpController::class, 'uploadAvatar'])->name('user-avatar');
 
     //hospital user registration
     Route::get('/feature-list', [HospitalRegisterController::class, 'getFeatureList'])->name('getFeatureList');
@@ -69,6 +70,8 @@ Route::group(['middleware' => 'api'], function ($router) {
 
         //get Appointment
         Route::get('/appointment/{userid?}', [AppointmentController::class, 'getAppointmentByPatientUser'])->name('appointment-patient');
+        //upload image
+        Route::post('/avatar', [RegisterController::class, 'uploadAvatar'])->name('patient-avatar');
     });
 
 

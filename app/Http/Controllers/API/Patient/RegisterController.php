@@ -113,4 +113,15 @@ class RegisterController extends Controller
         $user = User::with('state','city','userAvtar')->find($id);
         return ok($user);
     }
+
+    public function uploadAvatar(Request $request)
+    {
+        $user = User::find($request->id);
+        if($request->avatar !=null){
+            $assetdata = $this->fileUpload($request->avatar,$user,'local');
+            $assetdata['created_by'] =  $user->id;
+            $user->userAvtar()->create($assetdata);
+        }
+        return ok("File uploaded success.",$user);
+    }
 }

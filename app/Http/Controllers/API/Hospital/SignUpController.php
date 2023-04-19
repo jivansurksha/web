@@ -96,4 +96,15 @@ class SignUpController extends Controller
         ]);
         return created($user,'Password Updated successfully');
     }
+
+    public function uploadAvatar(Request $request)
+    {
+        $user = User::find($request->id);
+        if($request->avatar !=null){
+            $assetdata = $this->fileUpload($request->avatar,$user,'local');
+            $assetdata['created_by'] =  $user->id;
+            $user->userAvtar()->create($assetdata);
+        }
+        return ok("File uploaded success.",$user);
+    }
 }

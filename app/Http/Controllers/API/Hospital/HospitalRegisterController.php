@@ -119,4 +119,16 @@ class HospitalRegisterController extends Controller
         }
         return bad('Invalid Id');
     }
+
+    public function uploadProfileImage(Request $request)
+    {
+        $profile = Profile::find($request->id);
+        if($request->files !=null){
+            foreach($request->all()['images'] as $file){
+                $assetdata = $this->fileUpload($file,$profile,'local');
+                $profile->profileAvtar()->create($assetdata);
+            }
+        }
+        return ok("File uploaded success.",$profile);
+    }
 }
