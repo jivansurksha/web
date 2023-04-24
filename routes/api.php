@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Hospital\SignInController;
 use App\Http\Controllers\API\Hospital\SignUpController;
 use App\Http\Controllers\API\Patient\RegisterController;
 use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\SpecialityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -92,5 +93,11 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('/comments/{id?}', [CommentController::class, 'update'])->name('comments-update');
     Route::get('/comments/hospital/{id}', [CommentController::class, 'showReviewByHospital'])->name('comments-hospital-show');
     Route::get('/comments/user/{id}', [CommentController::class, 'showReviewByUser'])->name('comments-user-show');
+
+     //Speciality
+    Route::get('/speciality', [SpecialityController::class, 'index'])->name('speciality-index');
+    Route::post('/speciality', [SpecialityController::class, 'store'])->name('speciality-store');
+    Route::get('/speciality/{id}', [SpecialityController::class, 'show'])->name('speciality-show');
+    Route::post('/speciality/{id?}', [SpecialityController::class, 'update'])->name('speciality-update');
 
 });
