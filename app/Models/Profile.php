@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'contact_person', 'phone', 'email', 'alt_number', 'org_name', 'reg_number', 'website_id', 'type', 'speciality', 'facility_id', 'amenity_id', 'feature_id','created_by','address','state_id','city_id','postcode','latitude','longitude','is_active'];
+    protected $fillable = ['user_id', 'contact_person', 'phone', 'email', 'alt_number', 'org_name', 'reg_number', 'website_id', 'type', 'speciality_type','speciality_id','description', 'facility_id', 'amenity_id', 'feature_id','created_by','address','state_id','city_id','postcode','latitude','longitude','is_active'];
 	protected $dates = ['created_at', 'updated_at','deleted_at'];
 
     public function owner(){
@@ -40,5 +40,10 @@ class Profile extends Model
     public function withdrawrequest()
     {
         return $this->morphMany(WithdrawRequest::class, 'withdrable','model_type', 'model_id');
+    }
+
+    public function speciality()
+    {
+        return $this->belongsTo(Speciality::class,'speciality_id');
     }
 }

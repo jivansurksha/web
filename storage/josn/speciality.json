@@ -1,0 +1,172 @@
+[
+    {
+        "id": "1",
+        "sku": "allergy_immunology",
+        "name": "Allergy & Immunology"
+    },
+    {
+        "id": "2",
+        "sku": "anesthesiology",
+        "name": "Anesthesiology"
+    },
+    {
+        "id": "3",
+        "sku": "dermatology",
+        "name": "Dermatology"
+    },
+    {
+        "id": "4",
+        "sku": "emergency_medicine",
+        "name": "Emergency medicine"
+    },
+    {
+        "id": "5",
+        "sku": "endocrinology",
+        "name": "Endocrinology"
+    },
+    {
+        "id": "6",
+        "sku": "cardiac_surgery",
+        "name": "Cardiac Surgery"
+    },
+    {
+        "id": "7",
+        "sku": "cardiology",
+        "name": "Cardiology"
+    },
+    {
+        "id": "8",
+        "sku": "critical_care",
+        "name": "Critical care"
+    },
+    {
+        "id": "9",
+        "sku": "infectious_disease",
+        "name": "Infectious disease"
+    },
+    {
+        "id": "10",
+        "sku": "internal_medicine",
+        "name": "Internal medicine"
+    },
+    {
+        "id": "11",
+        "sku": "family_medicine",
+        "name": "Family medicine"
+    },
+    {
+        "id": "12",
+        "sku": "nephrology",
+        "name": "Nephrology"
+    },
+    {
+        "id": "13",
+        "sku": "neurology",
+        "name": "Neurology"
+    },
+    {
+        "id": "14",
+        "sku": "obstetrics_and_gynecology",
+        "name": "Obstetrics and Gynecology"
+    },
+    {
+        "id": "15",
+        "sku": "oncology",
+        "name": "Oncology"
+    },
+    {
+        "id": "16",
+        "sku": "ophthalmology",
+        "name": "Ophthalmology"
+    },
+    {
+        "id": "17",
+        "sku": "anesthesiology",
+        "name": "Anesthesiology"
+    },
+    {
+        "id": "18",
+        "sku": "orthopedic_surgery",
+        "name": "Orthopedic surgery"
+    },
+    {
+        "id": "19",
+        "sku": "otolaryngology",
+        "name": "Otolaryngology"
+    },
+    {
+        "id": "20",
+        "sku": "oral_and_maxillofacial_surgery",
+        "name": "Oral and Maxillofacial Surgery"
+    },
+    {
+        "id": "21",
+        "sku": "pathology",
+        "name": "Pathology"
+    },
+    {
+        "id": "22",
+        "sku": "pediatrics",
+        "name": "Pediatrics"
+    },
+    {
+        "id": "23",
+        "sku": "rheumatology",
+        "name": "Rheumatology"
+    },
+    {
+        "id": "24",
+        "sku": "physical_medicine_Rehabiliation",
+        "name": "Physical Medicine & Rehabiliation"
+    },
+    {
+        "id": "25",
+        "sku": "podiatry",
+        "name": "Podiatry"
+    },
+    {
+        "id": "26",
+        "sku": "preventative_medicine",
+        "name": "Preventative medicine"
+    },
+    {
+        "id": "27",
+        "sku": "pulmonary_medicine",
+        "name": "Pulmonary medicine"
+    },
+    {
+        "id": "28",
+        "sku": "psychiatry",
+        "name": "Psychiatry"
+    },
+    {
+        "id": "29",
+        "sku": "radiology_diagnostic",
+        "name": "Radiology (diagnostic)"
+    },
+    {
+        "id": "30",
+        "sku": "surgery_general",
+        "name": "Surgery (general)"
+    },
+    {
+        "id": "31",
+        "sku": "urology",
+        "name": "Urology"
+    },
+    {
+        "id": "32",
+        "sku": "neurosurgery",
+        "name": "Neurosurgery"
+    },
+    {
+        "id": "33",
+        "sku": "plastic_surgery",
+        "name": "Plastic surgery"
+    },
+    {
+        "id": "34",
+        "sku": "Gastroenterology",
+        "name": "Gastroenterology"
+    }
+]

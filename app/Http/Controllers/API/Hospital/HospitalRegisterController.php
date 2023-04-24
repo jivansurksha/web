@@ -70,7 +70,7 @@ class HospitalRegisterController extends Controller
     public function getHospitalById($id=null)
     {
         if($id!=null){
-            $hospitals = Profile::where('id',$id)->with('owner','creator')->get()->first();
+            $hospitals = Profile::where('id',$id)->with('owner','creator','speciality')->get()->first();
             $amenitys = json_decode($hospitals->amenity_id,true);
             $features = json_decode($hospitals->feature_id,true);
             $amenity=[];$feature=[];
@@ -96,7 +96,7 @@ class HospitalRegisterController extends Controller
     public function getHospitalByUserId($userId=null)
     {
         if($userId!=null){
-            $hospitals = Profile::where('user_id',$userId)->with('owner','creator')->get();
+            $hospitals = Profile::where('user_id',$userId)->with('owner','creator','speciality')->get();
             foreach($hospitals as $hospital){
                 $amenitys = json_decode($hospital->amenity_id,true);
                 $features = json_decode($hospital->feature_id,true);

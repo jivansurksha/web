@@ -39,3 +39,16 @@ if (!function_exists('cities')) {
         }
     }
 }
+
+if (!function_exists('specialities')) {
+    function specialities(): array
+    {
+        try {
+            $path = base_path('storage/josn/speciality.json');
+            $json = file_get_contents($path);
+            return json_decode($json, true);
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+}

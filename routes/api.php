@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\CommentController;
 use App\Http\Controllers\API\Hospital\AppointmentController;
 use App\Http\Controllers\API\Hospital\HospitalRegisterController;
 use App\Http\Controllers\API\Hospital\SignInController;
 use App\Http\Controllers\API\Hospital\SignUpController;
 use App\Http\Controllers\API\Patient\RegisterController;
+use App\Http\Controllers\API\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -74,5 +76,21 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('/avatar', [RegisterController::class, 'uploadAvatar'])->name('patient-avatar');
     });
 
+
+    //Review
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews-index');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews-store');
+    Route::get('/reviews/{id}', [ReviewController::class, 'show'])->name('reviews-show');
+    Route::post('/reviews/{id?}', [ReviewController::class, 'update'])->name('reviews-update');
+    Route::get('/reviews/hospital/{id}', [ReviewController::class, 'showReviewByHospital'])->name('reviews-hospital-show');
+    Route::get('/reviews/user/{id}', [ReviewController::class, 'showReviewByUser'])->name('reviews-user-show');
+
+    //comments
+    Route::get('/comments', [CommentController::class, 'index'])->name('comments-index');
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments-store');
+    Route::get('/comments/{id}', [CommentController::class, 'show'])->name('comments-show');
+    Route::post('/comments/{id?}', [CommentController::class, 'update'])->name('comments-update');
+    Route::get('/comments/hospital/{id}', [CommentController::class, 'showReviewByHospital'])->name('comments-hospital-show');
+    Route::get('/comments/user/{id}', [CommentController::class, 'showReviewByUser'])->name('comments-user-show');
 
 });
