@@ -25,7 +25,7 @@ class FeatureRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'name' =>  'required|string:100|unique:features,name',
+                'name' =>  'required|string:200|unique:features,name',
             ];
         }
         if ($this->method() == 'PATCH') {

@@ -25,7 +25,7 @@ class AmenityRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'name' =>  'required|string:100|unique:amenities,name',
+                'name' =>  'required|string:200|unique:amenities,name',
             ];
         }
         if ($this->method() == 'PATCH') {

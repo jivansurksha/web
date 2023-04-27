@@ -12,23 +12,6 @@ use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
 {
-    public function getState()
-    {
-        $state = State::where('country_id',101)->get();
-        return ok($state);
-    }
-
-    public function getCity($stateId=null)
-    {
-        if($stateId!=null){
-            $city = City::where('state_id',$stateId)->get();
-
-        }else{
-            $city = City::all();
-        }
-        return ok($city);
-    }
-
     public function signUp(Request $userRequest)
     {
         $rules=[

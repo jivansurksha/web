@@ -10,10 +10,7 @@ class SignInController extends Controller
 {
     public function signIn(Request $request)
     {
-        // $request->validate([
-        //     'user_name' => 'required|string|user_name',
-        //     'password' => ['required', 'string', 'min:6','max:20'],
-        // ]);
+
         $credentials = $request->only('user_name', 'password');
         // $token = Auth::guard('api')->attempt($credentials);
         $token = Auth::attempt($credentials);
@@ -59,7 +56,7 @@ class SignInController extends Controller
 
     public function getUserDetails($id)
     {
-        $user = User::with('state','city')->find($id);
+        $user = User::with('state','city','userAvtar')->find($id);
         return ok($user);
     }
 }

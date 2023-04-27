@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\CommentController;
 use App\Http\Controllers\API\Hospital\AppointmentController;
 use App\Http\Controllers\API\Hospital\HospitalRegisterController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\API\Hospital\SignUpController;
 use App\Http\Controllers\API\Patient\RegisterController;
 use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\SpecialityController;
+use App\Http\Controllers\API\StateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'api'], function ($router) {
 
-    Route::get('/state-list', [SignUpController::class, 'getState'])->name('getState');
-    Route::get('/city-list/{id?}', [SignUpController::class, 'getCity'])->name('getCity');
+    Route::get('/state-list', [StateController::class, 'index'])->name('index-state');
+    Route::get('/city-list/{id?}', [CityController::class, 'showByStateId'])->name('state-city');
 
     //hospital user registration
     Route::post('/signUp', [SignUpController::class, 'signUp'])->name('signUp');

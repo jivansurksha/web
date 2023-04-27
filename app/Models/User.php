@@ -47,7 +47,7 @@ class User extends Authenticatable implements JWTSubject
     //here is many to one polymorph
     public function userAvtar()
     {
-        return $this->morphOne(AssetFile::class, 'pictureable','model_type', 'model_id');
+        return $this->morphOne(AssetFile::class, 'pictureable','model_type', 'model_id')->latestOfMany();
     }
 
     public function profile(){

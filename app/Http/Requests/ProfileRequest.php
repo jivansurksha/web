@@ -27,8 +27,8 @@ class ProfileRequest extends FormRequest
             return [
                 'profile_phone' => 'required|string:30',
                 'profile_email' => 'required|email',
-                'profile_org_name' => 'required|string:100',
-                'profile_contact_person' => 'required|string:100',
+                'profile_org_name' => 'required|string:200',
+                'profile_contact_person' => 'required|string:200',
                 'profile_address' => 'required|string',
                 'profile_state_id' => 'required|integer',
                 'profile_city_id' => 'required|integer',
@@ -39,8 +39,8 @@ class ProfileRequest extends FormRequest
             return [
                 'profile_phone' => 'required|string:30',
                 'profile_email' => 'required|email',
-                'profile_org_name' => 'required|string:100',
-                'profile_contact_person' => 'required|string:100',
+                'profile_org_name' => 'required|string:200',
+                'profile_contact_person' => 'required|string:200',
                 'profile_address' => 'required|string',
                 'profile_state_id' => 'required|integer',
                 'profile_city_id' => 'required|integer',
